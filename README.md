@@ -46,7 +46,7 @@ VL FA0/1_GB0/2 !N:10 R:3-10 !N:20 R:12-30
 
 traducción
 
-(crea una vlan  que va de el puerto del switch al puerto del router      
+(crea una vlan  que se comunica de el puerto del switch{FA0/1} al puerto del router{GB0/2}      
 
 VL              FA0/1_GB0/2           
 
