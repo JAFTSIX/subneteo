@@ -1,5 +1,5 @@
 # subneteo
-programa de comandos para subnetear y pasar cisco mas facil
+programa de comandos para subnetear y trabajar el cisco packet tracer más fácil
 
 la misión de este programa es subnetear redes de tipo b y c.
 
