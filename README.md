@@ -1,4 +1,6 @@
 # subneteo
+
+*leelo en RAW o no se entenderá*
 programa de comandos para subnetear y trabajar el cisco packet tracer más fácil
 
 la misión de este programa es subnetear redes de tipo b y c.
