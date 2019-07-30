@@ -54,9 +54,9 @@ VL              FA0/1_GB0/2
    
 !  N:10                    R:3-10 
 
-si se quiere que nos de los códigos ocupa el router, primero hay que subnetear,
+si necesitas los códigos ocupa el router, primero hay que subnetear,
 
-y el comando cambia solo al final asi
+y el comando cambia solo al final así
 
 nombre de la vlan:10 ,  rango:los puertos del 3 al 10  con la ip subneteada que tiene el id de 2)
 
