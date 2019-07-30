@@ -88,8 +88,6 @@ def insert(comando):
   
 
  
-#           ,'wil':)
-#  else         
 
 #su b ip:140.20.0.0 LNS 6000,4000,2000,1000
 #VL FA0/1_Gi0/1 !N:10 R:8-9 ID:2 
