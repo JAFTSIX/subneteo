@@ -19,35 +19,6 @@ def principal(ip,tipo,lanes):
     print('                                   ') 
   
 
-def insert_p2(tipo,ip,mascara):
-  resumen=list()
-  unos=0
-  saltito=0
-  if re.search('^([0-9]+\.){3}[0-9]+',mascara):
-    #disecciona la mascara
-    partes_mascara=mascara.split('.')
-    #averiguar los unos
-    #para tener los bits de mascara
-    
-    for octeto in partes_mascara:unos+=int(str(bin(int(octeto))[2:]).count('1'))
-    host=2**(32-unos)
-    saltito=host//256 
-    resumen.append({'salto' :str(saltito),'mascara': mascara})  
-  else:
-    host=2**(32-int(mascara))
-    saltito=host//256
-    mascara=sacaMascara(mascara) 
-    resumen.append({'salto' :str(saltito),'mascara': mascara})
-
-  #hay que hacer los saltos manuales y poner un controlador de indices para list red
-  print(ip,resumen,tipo)
-  mision=salto(ip,resumen,tipo)
-  print('       ') 
-  for res in mision:
-    red.append(res)
-    print(res)
-    print('     ') 
-    print('     ') 
 
 #su c ip: 173.10.0.0 lns 50,25,10,6
 
@@ -131,14 +102,13 @@ def salto(ip,resumen,tipo):
         igu=igu+1
         broad=ip.replace('.a.b','.'+str(igu-1)+'.255')
         i=i+1   
-        mision.append({'id':i,'red':red,'primera':primera,'ultima':ultima,'broad':broad,'mascara':elemento['mascara']
-           ,'wil':wilcard(elemento['mascara'])})
+        mision.append({'id':i,'red':red,'primera':primera,'ultima':ultima,'broad':broad,'mascara':elemento['mascara'] ,'wil':wilcard(elemento['mascara'])})
   elif tipo=='C':           
     igu=0
     i=0
     for elemento in resumen:   
           red=ip.replace('.b','.'+str(igu))   
-          a=int(elemento['saltos'])
+          a=int(elemento['salto'])
           primera=ip.replace('.b','.'+str(igu+1))
           igu=igu+a-2
           ultima=ip.replace('.b','.'+str(igu))
@@ -146,8 +116,7 @@ def salto(ip,resumen,tipo):
           broad=ip.replace('.b','.'+str(igu))
           igu=igu+1
           i=i+1
-          mision.append({'id':i,'red':red,'primera':primera,'ultima':ultima,'broad':broad,'mascara':elemento['mascara']
-           ,'wil':wilcard(elemento['mascara'])})
+          mision.append({'id':i,'red':red,'primera':primera,'ultima':ultima,'broad':broad,'mascara':elemento['mascara'],'wil':wilcard(elemento['mascara'])})
   return mision
   
 

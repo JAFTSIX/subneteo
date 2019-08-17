@@ -1,0 +1,30 @@
+
+def insert_p2(tipo,ip,mascara):
+  resumen=list()
+  unos=0
+  saltito=0
+  if re.search('^([0-9]+\.){3}[0-9]+',mascara):
+    #disecciona la mascara
+    partes_mascara=mascara.split('.')
+    #averiguar los unos
+    #para tener los bits de mascara
+    
+    for octeto in partes_mascara:unos+=int(str(bin(int(octeto))[2:]).count('1'))
+    host=2**(32-unos)
+    saltito=host//256 
+    resumen.append({'salto' :str(saltito),'mascara': mascara})  
+  else:
+    host=2**(32-int(mascara))
+    saltito=host//256
+    mascara=sacaMascara(mascara) 
+    resumen.append({'salto' :str(saltito),'mascara': mascara})
+
+  #hay que hacer los saltos manuales y poner un controlador de indices para list red
+  print(ip,resumen,tipo)
+  mision=salto(ip,resumen,tipo)
+  print('       ') 
+  for res in mision:
+    red.append(res)
+    print(res)
+    print('     ') 
+    print('     ') 

@@ -11,6 +11,7 @@ vlanear2='^\s*VL\s+[A-Z]*[0-9]*\/[0-9]*_[A-Z]*[0-9]*\/[0-9]*\s+(\s*!\s*N:\s*[0-9
 insertar='^\s*IN\s+(B|C)\s+([0-9]+\.){3}([0-9]+)\-(([0-9]+\.){3}([0-9]+)|([0-9]{2}))'
 
 ips='^\s*IPS'
+translate='^\s*M\s+[0-9]+'
 
 def interfaz():
     print('E.S.A EL SACA APUROS 2019, ? para ayuda')
@@ -25,8 +26,12 @@ def interfaz():
               extraccionVLANS(comando)        
         elif re.search('^(EX|EXI|EXIT|EXT)\s*$',comando):
               break 
+        elif  re.search(translate,comando):
+              X=sub.sacaMascara(comando.replace('M','').replace(' ',''))  
+              print(X)
+              print(sub.wilcard(X))               
         elif re.search(insertar,comando):
-              insert(comando)      
+              #insert(comando)      
               pass
         elif re.search(ips,comando):
               print(' ') 
@@ -39,10 +44,13 @@ def interfaz():
               print('subneteo comando ejemplo: SU B ip: 190.123.2.0 LNS 1000,100,1223,100')    
               print('                   ')            
               print('vlan comando ejemplo: VL FA0/1 !N:10 R:3-10 !N:20 R:12-30')    
+              print('vlan con router:VL FA0/1_GB0/2 !N:10 R:3-10 ID:1 !N:20 R:12-30 ID:2 ')    
+              print('bits a mascara: m 32 (probablemente lo mas util) ')            
         else:
               pass    
 
 #su b ip: 190.123.0.0 lns 1500,1400,1000
+#su c ip: 190.123.50.0 lns 50,24,12,5
 #saca los datos de las tuplas y los limpia      
 def extraccionSUB(subneteo):
     tipo=re.findall('(\s*(B|C)\s*){1}',subneteo)[0][0]
